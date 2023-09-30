@@ -1,0 +1,25 @@
+{
+    "users": [ 
+        {
+            "_id": "",
+            "name": "",
+            "password": "",
+            "email": ""
+        }
+    ],
+    "activity": [
+        {
+            "_id": "",
+            "post": "",
+            "author": "user._id",
+            "timestamp": "",
+            "comments": [
+                {
+                    "timestamp": "",
+                    "comment": "",
+                    "author": ""
+                }
+            ]
+        }    
+    ]
+}
