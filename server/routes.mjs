@@ -11,13 +11,17 @@ router.get('/', async (req, res) => {
 router.get('/getSearchPostComments/:search_term', async(req, res) => {
     const searchTerm = req.params.search_term;
     let collection = db.collection('activities');
-    const response = await collection.find({
-        $or: [
-            {post: {$regex: searchTerm, $options: 'i'}},
-            {'comments.comment': {$regex: searchTerm, $options: 'i'}}
-        ]
-    }).toArray();
-    return res.status(200).send(response);
+    try {
+        const response = await collection.find({
+            $or: [
+                {post: {$regex: searchTerm, $options: 'i'}},
+                {'comments.comment': {$regex: searchTerm, $options: 'i'}}
+            ]
+        }).toArray();
+        return res.status(200).send(response);
+    } catch(err) {
+        return res.status(403).send(err);
+    }
 })
 
 router.post('/login', async (req, res) => {
@@ -74,7 +78,7 @@ router.post('/addPost', async(req, res) => {
         const newPost = (await collection.insertOne(req.body)).insertedId;
         return res.status(200).send(newPost);
     } catch(err) {
-        return res.status(403).send('Error adding new post: ' + err);
+        return res.status(403).send(err);
     }
 });
 
@@ -83,46 +87,64 @@ router.post('/addComment', async(req, res) => {
     const activityId = new ObjectId(req.body.id);
     const comment = req.body;
     delete comment['id'];
-    const response  = await collection.updateOne({_id: activityId}, {$push: {comments: comment}});
-    if(response.modifiedCount === 1) {
-        return res.status(200);
-    } 
-    return res.status(400);
+    try {
+        const response  = await collection.updateOne({_id: activityId}, {$push: {comments: comment}});
+        if(response.modifiedCount === 1) {
+            return res.status(200);
+        } 
+        return res.status(400);
+    } catch(err) {
+        return res.status(405).send(err);
+    }
 });
 
 
 router.get('/addLike/:activity_id/:author_id', async (req, res) => {
     let collection = db.collection('activities');
     const activityId = new ObjectId(req.params.activity_id);
-    const authorId = new ObjectId(req.params.author_id)
-    const response = await collection.updateOne({_id: activityId}, {$push: {likes: authorId}});
-    if(response.modifiedCount === 1) {
-        return res.status(200);
-    } else {
-        return res.status(400);
+    const authorId = new ObjectId(req.params.author_id);
+    try {
+        const response = await collection.updateOne({_id: activityId}, {$push: {likes: authorId}});
+        if(response.modifiedCount === 1) {
+            return res.status(200);
+        } else {
+            return res.status(400);
+        }
+    } catch(err) {
+        return res.status(403).send(err);
     }
 });
 
 router.get('/getAllActivities', async (req, res) => {
     let collection = db.collection('activities');
-    const result = await collection.find({}).toArray();
-    return res.status(200).send(result);
+    try {
+        const result = await collection.find({}).toArray();
+        return res.status(200).send(result);
+    } catch(err) {
+        return res.status(403).send(err);
+    }
 });
 
 router.get('/getSingleActivity/:activity_id', async (req, res) => {
     let collection = db.collection('activities');
     const activityId = new ObjectId(req.params.activity_id);
-    const response = await collection.findOne({_id: activityId});
-    return res.status(200).send(response);
+    try {
+        const response = await collection.findOne({_id: activityId});
+        return res.status(200).send(response);
+    } catch (err) {
+        return res.status(403).send(err);
+    }
 })
 
 router.get('/getUserNameFromId/:id', async (req, res) => {
     let collection = db.collection('users');
     const userId = new ObjectId(req.params.id);
-    const response = await collection.findOne({_id: userId}, {projection: {email: 0, password: 0}});
-    return res.status(200).send(response);
+    try {
+        const response = await collection.findOne({_id: userId}, {projection: {email: 0, password: 0}});
+        return res.status(200).send(response);
+    } catch(err) {
+        return res.status(403).send(err);
+    }
 });
-
-
 
 export default router;
