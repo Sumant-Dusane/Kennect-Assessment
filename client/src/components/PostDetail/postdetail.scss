@@ -45,6 +45,12 @@
             }
         }
     }
+    .btn-back {
+        display: block;
+        font-size: $font-size-sm;
+        margin: $gutter 0;
+        padding: $gutter;
+    }
     &__add-comment {
         position: relative;
         @include flex(row, center,center);
@@ -88,6 +94,12 @@
             span {
                 opacity: 0.5;
                 font-size: $font-size-xs;
+            }
+
+            div {
+                small {
+                    margin-right: $gutter1_2;
+                }
             }
         }
     }

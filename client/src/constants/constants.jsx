@@ -7,3 +7,7 @@ export function getCurrentUser() {
 export function setCurrentUser(userId) {
     return localStorage.setItem('curUser', userId);
 }
+
+export function removeCurrentUser(){
+    return localStorage.removeItem('curUser');
+}

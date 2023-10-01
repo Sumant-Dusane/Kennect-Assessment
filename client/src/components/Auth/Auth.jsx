@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import "./auth.scss";
-import { endpoint, setCurrentUser } from '../../constants/constants';
+import { endpoint, getCurrentUser, setCurrentUser } from '../../constants/constants';
 
 export default function Auth() {
     const [currentTab, setCurrentTab] = useState(0);
+    const currentUser = getCurrentUser();
+    if(currentUser) {
+        window.location.href = '/';
+        return
+    }
     async function loginUser(e) {
         e.preventDefault();
         const data = new FormData(e.target);
@@ -40,7 +45,6 @@ export default function Auth() {
             console.log(err);
         }
     }
-
     async function signupUser(e) {
         e.preventDefault();
         const data = new FormData(e.target);

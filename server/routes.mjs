@@ -23,12 +23,7 @@ router.post('/login', async (req, res) => {
     const user = await collection.findOne({email: email});
     if(user) {
         if(password === user.password) {
-            const options = {
-                expires: new Date(
-                  Date.now() + 3 * 24 * 60 * 60 * 1000 // expiry after 3 days
-                ),httpOnly: true,
-            };
-            return res.status(200).cookie('currentUser', user._id, options).send(user._id);
+            return res.status(200).send(user._id);
         } else {
             return res.status(401).send('Password Does Not Match');
         }

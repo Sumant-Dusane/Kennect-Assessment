@@ -5,7 +5,6 @@ import NewPost from '../NewPost/NewPost';
 import { endpoint } from '../../constants/constants';
 
 export default function MainActivity() {
-  //TODO: check cookie currUser
   const [allActivities, setActivities] = useState([]);
   const [isLoading, setLoader] = useState(true);
   useEffect(() => {
