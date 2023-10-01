@@ -24,6 +24,7 @@ export default function Router() {
             <Route path='/auth' element={<Auth />} />
             <Route path='/' element={<MainActivity />} />
             <Route path='/post/:postId' element={<PostDetail />} />
+            <Route path='search/:searchTerm' element={<MainActivity />} />
         </Routes>
       </div>
     </div>

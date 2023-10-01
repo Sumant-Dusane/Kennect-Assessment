@@ -8,6 +8,18 @@ router.get('/', async (req, res) => {
     res.send('SWAMISAMARTHA').status(200);
 });
 
+router.get('/getSearchPostComments/:search_term', async(req, res) => {
+    const searchTerm = req.params.search_term;
+    let collection = db.collection('activities');
+    const response = await collection.find({
+        $or: [
+            {post: {$regex: searchTerm, $options: 'i'}},
+            {'comments.comment': {$regex: searchTerm, $options: 'i'}}
+        ]
+    }).toArray();
+    return res.status(200).send(response);
+})
+
 router.post('/login', async (req, res) => {
     let collection = db.collection('users');
     const {email, password} = req.body;
