@@ -20,7 +20,7 @@ export default function Post({data}) {
             const activityLikes = await data?.likes;
             activityLikes.includes(getCurrentUser()) ? setLike(true) : setLike(false);
         }
-    }, []);
+    }, [data?.author, data?.likes]);
     function navigateToPost(id) {
         window.location.href = '/post/' + id;
     }
