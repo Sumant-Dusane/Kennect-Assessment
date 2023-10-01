@@ -1,0 +1,44 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/flex";
+@import "../../assets/styles/sudo";
+
+.new-post {
+    position: relative;
+    gap: $gutter1_2;
+    @include flex(column, flex-start, center);
+    textarea {
+        resize: none;
+        padding: $gutter;
+        padding-top: $gutter2x;
+        min-height: 100px;
+        width: 100%;
+        color: $dark;
+        border: 0;
+        border-top: 1px solid $stroke;
+
+        &:focus, &:focus-visible {
+            border: 0;
+            border-top: 1px solid $stroke;
+        }
+    }
+    h4 {
+        @include element-position(absolute, 8px, unset, unset, 16px);
+    }
+    .btn-post {
+        @include element-position(absolute, unset, 8px, 4px, unset);
+        color: $white;
+        font-size: $font-size-s;
+        padding: $gutter1_2 $gutter;
+        border-radius: $border-radius-pill;
+        background: $textColor;
+
+        &:disabled {
+            cursor: auto;
+            background-color: $stroke;
+        }
+
+        &:hover:not(:hover) {
+            background: lighten($textColor, 5);
+        }
+    }
+}

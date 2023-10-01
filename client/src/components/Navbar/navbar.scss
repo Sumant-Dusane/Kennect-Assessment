@@ -1,0 +1,55 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/flex";
+@import "../../assets/styles/sudo";
+
+
+.nav {
+    .btn-open, .btn-close {
+        font-size: $font-size-m;
+        padding: $gutter;
+        text-align: right;
+        width: 100%;
+    }
+    .navbar {
+        @include element-position(fixed, 0, 0, unset, 0);
+        @include flex(column, center, flex-start);
+        height: 100vh;
+        border-bottom: 1px solid $body-bg;
+        background-color: $white;
+        transform: translateY(-100%);
+        padding: 0 $gutter;
+        transition: $transition-in-out;
+
+        .search {
+            width: 100%;
+            border-radius: $border-radius-normal;
+            border-bottom: 1px solid $textColor;
+        }
+    
+        &.show {
+            transform: translateY(0);
+        }
+    }
+
+    @media screen and (min-width: 769px){
+        .btn-open, .btn-close {
+            display: none;
+        }
+        .navbar {
+            padding: 0;
+            justify-content: center;
+            transform: translateY(0);
+            flex-direction: row;
+            height: 100px;
+            gap: $gutter2x;
+
+            h1 {
+                margin-left: $gutter2x;
+            }
+
+            .search {
+                width: 50%;
+            }
+        }
+    }
+}

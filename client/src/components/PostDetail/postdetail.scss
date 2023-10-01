@@ -1,0 +1,111 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/sudo";
+@import "../../assets/styles/flex";
+@import "../../assets/styles/text-functions";
+
+.activity {
+    padding-top: 0;
+    .post-details {
+        cursor: auto;
+        position: relative;
+        padding: $gutter;
+        width: 100%;
+        border-top: 1px solid $stroke;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $stroke;
+        }
+
+        &__timeline {
+            opacity: 0.5;
+            text-align: right;
+        }
+
+        &__controls {
+            @include flex(row, center, flex-start);
+            gap: $gutter2x;
+
+            .btn {
+                position: relative;
+                margin-right: $gutter1_4;
+            }
+
+            .btn-like {
+                color: $strokeVariant;
+
+                &:hover {
+                    color: $orange;
+                }
+            }
+
+            .btn-comment {
+                color: $black;
+            }
+        }
+    }
+    .btn-back {
+        display: block;
+        font-size: $font-size-sm;
+        margin: $gutter 0;
+        padding: $gutter;
+    }
+    &__add-comment {
+        position: relative;
+        @include flex(row, center,center);
+        textarea {
+            resize: none;
+            min-height: 80px;
+            padding: $gutter1_4 $gutter;
+            width: 100%;
+        }
+        .btn-reply {
+            @include element-position(absolute, unset, 8px, 4px, unset);
+            color: $white;
+            padding: $gutter1_2;
+            border-radius: $border-radius-normal;
+            background: $textColor;
+
+            &:disabled {
+                cursor: not-allowed;
+                background-color: $stroke;
+            }
+
+            &:hover:not(:disabled) {
+                background: lighten($textColor, 5);
+            }
+        }
+    }
+    &__comments {
+        @include flex(column, flex-start, center);
+        border-top: 1px solid $stroke;
+        gap: $gutter;
+        width: 100%;
+        padding: $gutter;
+
+        h2 {
+            margin-bottom: $gutter;
+        }
+
+        &__comment {
+            width: 100%;
+            margin: 0 ;
+
+            p {
+                @include line-clamp(10);
+            }
+
+            div {
+                margin-top: $gutter1_2;
+
+                span {
+                    opacity: 0.5;
+                    font-size: $font-size-xs;
+                }
+
+                small {
+                    margin-right: $gutter1_2;
+                }
+            }
+        }
+    }
+}
