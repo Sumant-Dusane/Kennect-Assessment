@@ -6,6 +6,8 @@ import { endpoint } from '../../constants/constants';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHourglassEmpty } from '@fortawesome/free-solid-svg-icons';
+import {removeCurrentUser} from "../../constants/constants";
+import LoadingState from '../LoadingState/LoadingState';
 
 export default function MainActivity() {
   const [allActivities, setActivities] = useState([]);
@@ -43,14 +45,19 @@ export default function MainActivity() {
       return <Post key={index} data={activity} />
     })
   }
+  function logoutUser() {
+    removeCurrentUser();
+    window.location.href = '/auth';
+  }
   return (
     <> 
+    <button className='btn btn-logout' onClick={logoutUser}>Logout</button> 
     {searchTerm ? 
       <div className="title">You Searched For 👀: <b>{searchTerm}</b>, <br /> Here are the Results </div> : 
       <div className="title"><b>Welcome 👋,</b> <br /> Checkout latest posts</div>} 
     <NewPost />
     { isLoading ? 
-      <div>Please Wait Loading Data...</div> :
+      <LoadingState /> :
       allActivities.length ?
       MapAllPosts(allActivities) :
       <div className='empty-state'>

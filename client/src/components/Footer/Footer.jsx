@@ -4,7 +4,7 @@ import "./footer.scss";
 export default function Footer() {
   return (
     <div className='footer'>
-      <span>Made with ❤️ by Sumant Dusane</span>
+      <a href='https://www.linkedin.com/in/sumant-dusane'>Made with ❤️ by Sumant Dusane</a>
     </div>
   )
 }

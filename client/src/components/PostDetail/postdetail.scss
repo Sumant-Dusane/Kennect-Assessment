@@ -1,6 +1,7 @@
 @import "../../assets/styles/variables";
 @import "../../assets/styles/sudo";
 @import "../../assets/styles/flex";
+@import "../../assets/styles/text-functions";
 
 .activity {
     padding-top: 0;
@@ -10,7 +11,6 @@
         padding: $gutter;
         width: 100%;
         border-top: 1px solid $stroke;
-        z-index: 0;
 
         &:not(:last-child) {
             border-bottom: 1px solid $stroke;
@@ -28,8 +28,6 @@
             .btn {
                 position: relative;
                 margin-right: $gutter1_4;
-                z-index: 1;
-                pointer-events: auto;
             }
 
             .btn-like {
@@ -89,14 +87,21 @@
         }
 
         &__comment {
-            padding-left: $gutter;
+            width: 100%;
+            margin: 0 ;
 
-            span {
-                opacity: 0.5;
-                font-size: $font-size-xs;
+            p {
+                @include line-clamp(10);
             }
 
             div {
+                margin-top: $gutter1_2;
+
+                span {
+                    opacity: 0.5;
+                    font-size: $font-size-xs;
+                }
+
                 small {
                     margin-right: $gutter1_2;
                 }

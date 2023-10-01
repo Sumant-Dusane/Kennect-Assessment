@@ -5,6 +5,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { endpoint, getCurrentUser } from '../../constants/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import LoadingState from '../LoadingState/LoadingState';
 
 export default function PostDetail() {
   const { postId } = useParams();
@@ -64,7 +65,8 @@ export default function PostDetail() {
   return (
     <> 
       {
-        isLoading ? <>Please Wait...</> :
+        isLoading ? 
+          <LoadingState/> :
           <>
             <a className='btn btn-back' href="/"><FontAwesomeIcon icon={faArrowLeft} />  Back to Activity</a>
             <Post data={activityFeed} />

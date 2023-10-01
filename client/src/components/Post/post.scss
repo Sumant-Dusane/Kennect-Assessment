@@ -7,7 +7,6 @@
     padding: $gutter;
     width: 100%;
     border-top: 1px solid $stroke;
-    z-index: 0;
 
     &:not(:last-child) {
         border-bottom: 1px solid $stroke;
@@ -26,8 +25,6 @@
         .btn {
             position: relative;
             margin-right: $gutter1_4;
-            z-index: 1;
-            pointer-events: auto;
         }
 
         .btn-like {

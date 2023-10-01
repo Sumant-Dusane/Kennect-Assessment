@@ -9,19 +9,12 @@ $black:             #000000;
 $dark:              #383838;
 $stroke:            #DDE5EA;
 $strokeVariant:     #BACBD5;
-$textColor:         #319795;
-$textColorVariant:  #8DA4BF;
-$green:             #05C165;
-$blue:              #0073E6;
+$textColor:         $dark;
 $blueSubtle:        #E5F1FC;
 $orange:            #c86508;
-$orangeSubtle:      #FBEBEA;
-$chipsBlue:         #DDEDFF;
 
 // Font Size
 $font-size-base:      1rem;
-$font-size-xxl:         $font-size-base * 4;                //64px
-$font-size-xl:         $font-size-base * 3;                //48px
 $font-size-l:         $font-size-base * 2;                //32px
 $font-size-m:         $font-size-base * 1.5;              //24px
 $font-size-s:        $font-size-base * 1.125;             //18px
@@ -36,12 +29,9 @@ $gutter:      1rem;
 $gutter1_4:   $gutter * 0.25;                         //4px
 $gutter1_2:   $gutter * 0.5;                          //8px
 $gutter10:    $gutter * 0.625;                       //10px
-$gutter12:    $gutter * 0.75;                        //12px
-$gutter20:    $gutter * 1.25;                        //20px
 $gutter24:    $gutter * 1.5;                         //24px
 $gutter2x:    $gutter * 2;                           //32px
 $gutter3x:    $gutter * 3;                           //48px
-$gutter4x:    $gutter * 4;                           //64px
 
 
 //Font Weights
@@ -64,10 +54,7 @@ $border-radius-button:  50px;
 $border-radius-rounded:  50%;
 
 // Transitions
-$transition-long:       500ms all ease-in-out;
 $transition-in-out:     200ms all ease-in-out;
-$transition-in:         200ms all ease-in;
-$transition-out:        200ms all ease-out;
 
 $box-shadow-large:    0px -4px 50px 0px rgba(0, 0, 0, 0.09);
 
