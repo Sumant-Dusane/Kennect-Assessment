@@ -11,7 +11,7 @@
         {
             "_id": "",
             "post": "",
-            "author": "user._id",
+            "author": "",
             "timestamp": "",
             "comments": [
                 {
@@ -19,7 +19,8 @@
                     "comment": "",
                     "author": ""
                 }
-            ]
+            ],
+            "likes" : []
         }    
     ]
 }

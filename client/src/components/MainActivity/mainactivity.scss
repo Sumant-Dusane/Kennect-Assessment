@@ -1,0 +1,14 @@
+@import "../../assets/styles/variables";
+
+.activity {
+    background-color: $white;
+    padding-top: $gutter;
+    margin: 0 auto;
+    width: 65%;
+}
+
+.title {
+    font-size: $font-size-l;
+    margin-bottom: $gutter;
+    padding: $gutter;
+}

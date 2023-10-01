@@ -1,0 +1,50 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/flex";
+
+.post {
+    cursor: pointer;
+    position: relative;
+    padding: $gutter;
+    width: 100%;
+    border-top: 1px solid $stroke;
+    z-index: 0;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $stroke;
+    }
+
+    &__timeline {
+        opacity: 0.5;
+        text-align: right;
+        font-size: $font-size-xs;
+    }
+
+    &__controls {
+        @include flex(row, center, flex-start);
+        gap: $gutter2x;
+
+        .btn {
+            position: relative;
+            margin-right: $gutter1_4;
+            z-index: 1;
+            pointer-events: auto;
+        }
+
+        .btn-like {
+            color: $strokeVariant;
+    
+            &:hover, &.liked {
+                color: $orange;
+            }
+        }
+    
+        .btn-comment {
+            color: $black;
+        }
+    }
+
+
+    &:hover {
+        background-color: $body-bg;
+    }
+}
