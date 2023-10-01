@@ -1,0 +1,45 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/flex";
+
+.activity {
+    margin: $gutter;
+    background-color: $white;
+    padding-top: $gutter;
+    box-shadow: $box-shadow-large;
+    border-radius: $border-radius-small;
+
+    .empty-state {
+        @include flex(column, center, center);
+        gap: $gutter;
+        padding: $gutter;
+        border-top: 1px solid $stroke;
+        margin-top: $gutter;
+    
+        .icon {
+            font-size: $font-size-sm;
+            border-radius: $border-radius-rounded;
+            background-color: $blueSubtle;
+            padding: $gutter2x;
+        }
+    }
+    
+    .title {
+        font-size: $font-size-l;
+        margin-bottom: $gutter;
+        padding: $gutter;
+    }
+    .btn-logout {
+        color: $orange;
+        padding: $gutter;
+        display: block;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    @media screen and (min-width: 769px) {
+        margin: 0 auto;
+        width: 65%;
+    }
+}

@@ -1,0 +1,10 @@
+@import "../../assets/styles/variables";
+
+.loading-state {
+    text-align: center;
+    padding: $gutter2x 0;
+
+    &__text {
+        font-size: $font-size-m;
+    }
+}

@@ -1,0 +1,37 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/flex";
+
+.auth {
+    form {
+        @include flex(column, center, center);
+        gap: $gutter2x;
+        box-shadow: $box-shadow-large;
+        padding: $gutter;
+        border-radius: $border-radius-normal;
+
+        input {
+            width: 100%;
+
+            &:not(.btn-submit) {
+                border-bottom: 1px solid $stroke;
+            }
+            &:focus, &:focus-visible {
+                border: 1px solid transparent;
+                border-bottom-color: $textColor;
+            }
+        }
+
+        .btn-submit {
+            color: $white;
+            padding: $gutter;
+            border-radius: $border-radius-normal;
+            background-color: $textColor;
+            border: 1px solid $textColor;
+
+            &:hover {
+                background: lighten($color: $textColor, $amount: 10);
+            }
+        }
+
+    }
+}

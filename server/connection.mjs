@@ -1,11 +1,12 @@
 import { MongoClient } from "mongodb";
 
-const connectionString = "";
+const connectionString = "mongodb+srv://sumant-dusane:sumant123456@sumant-dusane.3donyvz.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp";
 const client = new MongoClient(connectionString);
 
 let conn;
 try {
     conn  = await client.connect();
+    console.log("DB CONNECTED");
 } catch(e) {
     console.error('Error: ', e);
 }
