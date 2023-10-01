@@ -30,6 +30,7 @@ export default function NewPost() {
     const data = await response.json();
     if(data) {
       alert("Post Uploaded")
+      window.location.reload();
     }
   }
   return (

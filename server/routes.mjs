@@ -90,9 +90,9 @@ router.post('/addComment', async(req, res) => {
     try {
         const response  = await collection.updateOne({_id: activityId}, {$push: {comments: comment}});
         if(response.modifiedCount === 1) {
-            return res.status(200);
+            return res.status(200).send('comment added');
         } 
-        return res.status(400);
+        return res.status(400).send('unable to add comment');
     } catch(err) {
         return res.status(405).send(err);
     }
@@ -106,14 +106,30 @@ router.get('/addLike/:activity_id/:author_id', async (req, res) => {
     try {
         const response = await collection.updateOne({_id: activityId}, {$push: {likes: authorId}});
         if(response.modifiedCount === 1) {
-            return res.status(200);
+            return res.status(200).send('liked post');
         } else {
-            return res.status(400);
+            return res.status(400).send('unable to like');
         }
     } catch(err) {
         return res.status(403).send(err);
     }
 });
+
+router.get('/removeLike/:activity_id/:author_id', async (req, res) => {
+    let collection = db.collection('activities');
+    const activityId = new ObjectId(req.params.activity_id);
+    const authorId = new ObjectId(req.params.author_id);
+    try {
+        const response = await collection.updateOne({_id: activityId}, {$pull: {likes: authorId}});
+        if(response.modifiedCount === 1) {
+            return res.status(200).send('unliked post');
+        } else {
+            return res.status(400).send('unable to unlike');
+        }
+    } catch(err) {
+        return res.status(403).send(err);
+    }
+} )
 
 router.get('/getAllActivities', async (req, res) => {
     let collection = db.collection('activities');

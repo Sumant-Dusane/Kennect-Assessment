@@ -2,10 +2,9 @@
 @import "../../assets/styles/flex";
 
 .activity {
+    margin: $gutter;
     background-color: $white;
     padding-top: $gutter;
-    margin: 0 auto;
-    width: 65%;
     box-shadow: $box-shadow-large;
     border-radius: $border-radius-small;
 
@@ -37,5 +36,10 @@
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    @media screen and (min-width: 769px) {
+        margin: 0 auto;
+        width: 65%;
     }
 }

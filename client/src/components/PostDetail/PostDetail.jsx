@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Post from '../Post/Post';
 import "./postdetail.scss";
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { endpoint, getCurrentUser } from '../../constants/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -13,21 +13,21 @@ export default function PostDetail() {
   const [isLoading, setLoader] = useState(true);
   const [newComment, setNewComment] = useState('');
   useEffect(() => {
-    async function getPost() {
-      const response = await fetch(endpoint + 'getSingleActivity/' + postId);
-      if (!response.ok) {
-        return
-      }
-      const data = await response.json();
-      if (data) {
-        setActivityFeed(data);
-      }
-      if (data) {
-        setLoader(false);
-      }
-    }
     getPost();
-  }, [activityFeed?._id, activityFeed?.comments?.length]);
+  }, [activityFeed?.length]);
+  async function getPost() {
+    const response = await fetch(endpoint + 'getSingleActivity/' + postId);
+    if (!response.ok) {
+      return
+    }
+    const data = await response.json();
+    if (data) {
+      setActivityFeed(data);
+    }
+    if (data) {
+      setLoader(false);
+    }
+  }
   function MapComments(comments) {
     if (!comments?.length) {
       return <>NO COMMENTS FOUND</>
@@ -61,6 +61,7 @@ export default function PostDetail() {
     if(!response.ok) {
       return
     }
+    getPost();
   }
   return (
     <> 
