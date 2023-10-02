@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import routes from "./routes.mjs";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 
 const PORT = process.env.PORT || 8000;
 const app = express();
