@@ -1,4 +1,4 @@
-export const endpoint = 'http://localhost:8000/api/v1/';
+export const endpoint = 'https://kennect-social-backend.onrender.com/api/v1/';
 
 export function getCurrentUser() {
     return localStorage.getItem('curUser')
