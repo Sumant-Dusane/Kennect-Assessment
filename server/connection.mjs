@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const connectionString = "mongodb+srv://sumant-dusane:sumant123456@sumant-dusane.3donyvz.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp";
+const connectionString = process.env.MONGO_URI;
 const client = new MongoClient(connectionString);
 
 let conn;

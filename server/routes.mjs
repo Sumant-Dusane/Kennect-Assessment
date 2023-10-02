@@ -1,6 +1,6 @@
 import express from "express";
 import db from "./connection.mjs";
-import { MongoCryptAzureKMSRequestError, ObjectId } from "mongodb";
+import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
