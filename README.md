@@ -21,6 +21,9 @@
 * Backend Hosted on - https://kennect-social-backend.onrender.com/api/v1
 * Frontend Hosted on -  https://kennect-assessment-frontend.vercel.app/auth
 
+## 📕 Note: 
+To fetch the data from backend please navigate to backend link and wait for turning it on (for 3 mins, its free hosting ). It will display "SWAMISAMARTHA" on screen then you can use frontend.
+
 ## Flow 
 * User have to Login for accessing the Main Page
 * Current User Login is stored in Local Storage
